@@ -37,4 +37,9 @@ class StringCalculatorTest {
     public void numbersBiggerThanOneThousandAdd() {
         assertEquals(2, INSTANCE.add("2, 1001"));
     }
+
+    @Test
+    public void delimiterWithAnyLengthAdd() {
+        assertEquals(6, INSTANCE.add("//[***]\n1***2***3"));
+    }
 }

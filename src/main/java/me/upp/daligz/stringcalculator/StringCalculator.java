@@ -11,23 +11,26 @@ public class StringCalculator {
         // Check if the string is empty
         if (numbers.isEmpty()) return 0;
 
-        String delimiter = ",";
+        final String defaultDelimiter = ",";
+        String delimiter = defaultDelimiter;
 
         // Detect new delimiter
         if (numbers.startsWith("//")) {
-            numbers = numbers.replaceFirst("//", "");
+            numbers = numbers.replaceFirst("//", "")
+                    .replaceFirst("\\[", "")
+                    .replaceFirst("]", "");
             delimiter = numbers.split("\n")[0];
         }
 
         // Remove spaces and new lines from expression
         numbers = numbers
                 .replaceAll(" ", "")
-                .replaceAll("\n", delimiter);
+                .replaceAll("\n", defaultDelimiter)
+                .replace(delimiter, defaultDelimiter);
 
         // Computing
         final String finalNumbers = numbers;
-        final String finalDelimiter = delimiter;
-        Supplier<IntStream> streamSupplier = () -> Arrays.stream(finalNumbers.split(finalDelimiter))
+        Supplier<IntStream> streamSupplier = () -> Arrays.stream(finalNumbers.split(defaultDelimiter))
                 .filter(numStr -> !numStr.isEmpty())
                 .map(Integer::valueOf)
                 // Remove numbers bigger than 1000
