@@ -1,6 +1,8 @@
 package me.upp.daligz.stringcalculator;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
 
@@ -12,21 +14,21 @@ public class StringCalculator {
         if (numbers.isEmpty()) return 0;
 
         final String defaultDelimiter = ",";
-        String delimiter = defaultDelimiter;
+        final List<String> delimiters = new ArrayList<>();
 
         // Detect new delimiter
         if (numbers.startsWith("//")) {
             numbers = numbers.replaceFirst("//", "")
-                    .replaceFirst("\\[", "")
-                    .replaceFirst("]", "");
-            delimiter = numbers.split("\n")[0];
+                    .replaceAll("\\[", "");
+            delimiters.addAll(Arrays.stream(numbers.split("(]|\n)")).toList());
+            numbers = numbers.replaceAll("]", "");
         }
 
         // Remove spaces and new lines from expression
         numbers = numbers
                 .replaceAll(" ", "")
-                .replaceAll("\n", defaultDelimiter)
-                .replace(delimiter, defaultDelimiter);
+                .replaceAll("\n", defaultDelimiter);
+        for (final String delimiter : delimiters) numbers = numbers.replace(delimiter, ",");
 
         // Computing
         final String finalNumbers = numbers;

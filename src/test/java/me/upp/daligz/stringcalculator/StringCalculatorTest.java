@@ -42,4 +42,9 @@ class StringCalculatorTest {
     public void delimiterWithAnyLengthAdd() {
         assertEquals(6, INSTANCE.add("//[***]\n1***2***3"));
     }
+
+    @Test
+    public void multipleDelimitersWithAnyLengthAdd() {
+        assertEquals(6, INSTANCE.add("//[*][%]\n1*2%3"));
+    }
 }
