@@ -22,4 +22,9 @@ class StringCalculatorTest {
     public void detectNewLinesAdd() {
         assertEquals(750, INSTANCE.add("250, 250 \n 250"));
     }
+
+    @Test
+    public void changeDelimiterAdd() {
+        assertEquals(500, INSTANCE.add("//;\n250;250"));
+    }
 }
