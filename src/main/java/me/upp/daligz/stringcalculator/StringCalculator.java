@@ -33,8 +33,6 @@ public class StringCalculator {
                 .map(Integer::valueOf)
                 .mapToInt(Integer::intValue);
 
-        final int sum = streamSupplier.get().sum();
-
         // Check negatives
         final int[] ints = streamSupplier.get().toArray();
         final StringBuilder negatives = new StringBuilder();
@@ -54,18 +52,6 @@ public class StringCalculator {
             }
         }
 
-        return sum;
-
-        /*
-        .filter(s -> {
-                    try {
-                        if (Integer.parseInt(s) < 0) throw new Exception("asd");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        return false;
-                    }
-                    return true;
-                })
-         */
+        return streamSupplier.get().sum();
     }
 }
