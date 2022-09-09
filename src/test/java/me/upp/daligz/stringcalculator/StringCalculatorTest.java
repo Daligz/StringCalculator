@@ -12,4 +12,9 @@ class StringCalculatorTest {
     public void emptyAdd() {
         assertEquals(0, INSTANCE.add(""));
     }
+
+    @Test
+    public void upToTwoNumbersAdd() {
+        assertEquals(500, INSTANCE.add("250, 250"));
+    }
 }
