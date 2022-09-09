@@ -32,4 +32,9 @@ class StringCalculatorTest {
     public void detectNegativesAdd() {
         assertEquals(2, INSTANCE.add("-50, -1, -2, 55"));
     }
+
+    @Test
+    public void numbersBiggerThanOneThousandAdd() {
+        assertEquals(2, INSTANCE.add("2, 1001"));
+    }
 }

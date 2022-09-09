@@ -30,6 +30,8 @@ public class StringCalculator {
         Supplier<IntStream> streamSupplier = () -> Arrays.stream(finalNumbers.split(finalDelimiter))
                 .filter(numStr -> !numStr.isEmpty())
                 .map(Integer::valueOf)
+                // Remove numbers bigger than 1000
+                .filter(integer -> integer <= 1000)
                 .mapToInt(Integer::intValue);
 
         // Check negatives
