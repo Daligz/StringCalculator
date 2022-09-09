@@ -27,4 +27,9 @@ class StringCalculatorTest {
     public void changeDelimiterAdd() {
         assertEquals(500, INSTANCE.add("//;\n250;250"));
     }
+
+    @Test
+    public void detectNegativesAdd() {
+        assertEquals(2, INSTANCE.add("-50, -1, -2, 55"));
+    }
 }
