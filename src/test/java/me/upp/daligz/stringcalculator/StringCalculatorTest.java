@@ -17,4 +17,9 @@ class StringCalculatorTest {
     public void upToTwoNumbersAdd() {
         assertEquals(500, INSTANCE.add("250, 250"));
     }
+
+    @Test
+    public void detectNewLinesAdd() {
+        assertEquals(750, INSTANCE.add("250, 250 \n 250"));
+    }
 }

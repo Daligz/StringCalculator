@@ -5,9 +5,15 @@ import java.util.Arrays;
 public class StringCalculator {
 
     public int add(String numbers) {
-        // Remove spaces from expression
-        numbers = numbers.replaceAll(" ", "");
+        // Check if the string is empty
         if (numbers.isEmpty()) return 0;
+
+        // Remove spaces and new lines from expression
+        numbers = numbers
+                .replaceAll(" ", "")
+                .replaceAll("\n", ",");
+
+        // Computing
         return Arrays.stream(numbers.split(","))
                 .filter(numStr -> !numStr.isEmpty())
                 .map(Integer::valueOf)
