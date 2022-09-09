@@ -3,7 +3,6 @@ package me.upp.daligz.stringcalculator;
 import java.util.Arrays;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class StringCalculator {
 
