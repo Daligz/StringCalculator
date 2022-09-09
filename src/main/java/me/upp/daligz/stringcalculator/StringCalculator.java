@@ -9,6 +9,9 @@ public class StringCalculator {
 
     public int add(String numbers) {
 
+        // Check if the string is empty
+        if (numbers.isEmpty()) return 0;
+
         String delimiter = ",";
 
         // Detect new delimiter
@@ -16,9 +19,6 @@ public class StringCalculator {
             numbers = numbers.replaceFirst("//", "");
             delimiter = numbers.split("\n")[0];
         }
-
-        // Check if the string is empty
-        if (numbers.isEmpty()) return 0;
 
         // Remove spaces and new lines from expression
         numbers = numbers
