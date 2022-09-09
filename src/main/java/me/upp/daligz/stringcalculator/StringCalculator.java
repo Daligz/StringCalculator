@@ -36,11 +36,11 @@ public class StringCalculator {
         final int[] ints = streamSupplier.get().toArray();
         final StringBuilder negatives = new StringBuilder();
         final int length = ints.length;
-        for (int i = 0; i < length; i++){
+        for (int i = 0; i < length; i++) {
             final int anInt = ints[i];
             if (anInt > 0) continue;
             negatives.append(anInt);
-            if ((i + 1) < length) negatives.append(", ");
+            if ((i + 2) < length) negatives.append(", ");
         }
 
         if (!negatives.isEmpty()) {
